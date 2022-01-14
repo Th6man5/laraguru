@@ -1,13 +1,13 @@
 @extends('layouts.template')
 @section('title', 'Data Masukan Siswa')
 @section('content')
-<div class="wrapper">
-  <h1></h1>
+<br>
+<br>
 
   
   @if (session('success'))
   <div class="alert-success">
-    <p>{{ session('success') }}</p>
+    <h5>{{ session('success') }}</h5>
   </div>
   @endif
   
@@ -20,10 +20,10 @@
     </ul>
   </div>
   @endif
-
+<div class="container">
   <div class="card">
-    <div class="card-header bg-dark text-white">
-      <h5>Tambah Data Siswa</h5> 
+    <div class="card-header">
+      <h4>Tambah Data Siswa</h4> 
      </div>
 
 
@@ -37,14 +37,15 @@
   </div>
 
 
-<div class="card-footer bg-grey">
+<div class="card-footer">
   <div class="d-flex justify-content-end d-grip gap-3">
      <input class="btn btn-dark" type="submit" value="Submit">
      <a class="btn btn-dark" href="http://127.0.0.1:8000/siswa" role="button">Kembali</a>
   </div>
 </div>
     </form>
+    @endsection
+</div>
 </div>
 </div>
 
-@endsection

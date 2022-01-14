@@ -1,5 +1,5 @@
 @extends('layouts.template')
-@section('title', 'Buat Data Ruangan')
+@section('title', 'Buat Data User')
 @section('content')
 
 
@@ -22,15 +22,21 @@
   <div class="container">
   <div class="card">
     <div class="card-header">
-      <h4>Tambah Data Ruangan</h4> 
+      <h4>Tambah Data User</h4> 
      </div>
 
   <div class="card-body">
-  <form method="POST" action="{{ url('ruangan') }}">
+  <form method="POST" action="{{ url('user') }}">
     @csrf
     <div class="form-group">
-    <label>Nama Ruangan</label><br>
-    <input class="form-control" name="nama" type="text" placeholder="">   
+    <label>User</label><br>
+    <input class="form-control" name="name" type="text" placeholder=" {{ Auth::user()->name }}">   
+  </div><br>
+  </div>
+
+  <div class="form-group">
+    <label>Email</label><br>
+    <input class="form-control" name="email" type="text" placeholder="">   
   </div><br>
   </div>
 
@@ -38,7 +44,7 @@
 <div class="card-footer">
   <div class="d-flex justify-content-end d-grip gap-3">
      <input class="btn btn-dark" type="submit" value="Submit">
-     <a class="btn btn-dark" href="http://127.0.0.1:8000/ruangan" role="button">Kembali</a>
+     <a class="btn btn-dark" href="http://127.0.0.1:8000/user" role="button">Kembali</a>
   </div>
 </div>
     </form>

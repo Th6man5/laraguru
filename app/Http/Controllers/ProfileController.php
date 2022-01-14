@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\guru;
+use App\Models\user;
+use Illuminate\Support\Facades\Hash;
 
-
-class GuruController extends Controller
+class ProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,9 @@ class GuruController extends Controller
      */
     public function index()
     {
-        $gurus = guru::all(); 
+    
         
-   return view('guru.index', ['gurus' => $gurus]); 
+        return view('profile.index'); 
     }
 
     /**
@@ -27,7 +27,7 @@ class GuruController extends Controller
      */
     public function create()
     {
-        return view('guru.create');
+        return view('profile.create');
     }
 
     /**
@@ -39,16 +39,16 @@ class GuruController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nip' => 'required',
-            'nama' => 'required',
-            'mapel' => 'required' 
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
           ]);
         
           $input = $request->all();
         
-          $guru = guru::create($input);
+          $profile = profile::create($input);
          
-          return back()->with('success','Penambahan Data Berhasil');
+          return back()->with('success',' data telah berhasil dibuat.');
     }
 
     /**
@@ -70,11 +70,9 @@ class GuruController extends Controller
      */
     public function edit($id)
     {
-        $guru = guru::findOrFail($id);
-   
-   return view('guru.edit', [
-          'guru' => $guru
-   ]);
+        return view('profile', [
+            'user' => $request->user()
+        ]);
     }
 
     /**
@@ -84,15 +82,14 @@ class GuruController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         $request->validate([
-            'nip' => 'required',
-            'nama' => 'required',
-            'mapel' => 'required'
+            'name' => 'required',
+            'email' => 'required'
          ]);
                
-         $guru = guru::find($id)->update($request->all()); 
+         $profile = profile::find($id)->update($request->all()); 
                 
          return back()->with('success',' Data telah diperbaharui!');
     }
@@ -105,10 +102,6 @@ class GuruController extends Controller
      */
     public function destroy($id)
     {
-        $guru = guru::find($id);
-
-   $guru->delete();
-
-   return back()->with('success',' Penghapusan berhasil.');
+        //
     }
 }

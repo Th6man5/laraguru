@@ -69,3 +69,8 @@ tfoot {
   height: 0px;
   border-bottom:solid 2px red;
 }
+.body  {   
+    background-color:#9B59B6;
+    margin: -19px 0 0 0; /*-19px here to remove white space on the very top of the page*/
+    width: 100%;  
+}

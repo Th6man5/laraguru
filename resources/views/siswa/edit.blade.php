@@ -43,8 +43,9 @@
   </div>
 </div>
     </form>
+    @endsection
 </div>
 </div>
-@endsection
+
 
 <!--{{ $siswa->title }}-->
